@@ -959,7 +959,8 @@ App.prototype.selectTab = function(tab, evt) {
   debug('selecting tab');
 
   // **hacky stuff** only select tab if it's done with left click
-  if (evt && evt.button !== 0) {
+  // don't select tab if we're closing the tab with the 'close-handle'
+  if (evt && (evt.button !== 0 || evt.target.classList.contains('close-handle'))) {
     return;
   }
 
